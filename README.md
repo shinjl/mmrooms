@@ -1,6 +1,6 @@
 # My Meeting Rooms
 
-<img style="float: right; margin: 0px 0 10px 30px;" src="./client/images/logo.png">
+<img align="right" width="64" height="64" src="./client/images/logo.png">
 
 My Meeting Rooms is a simple meeting room reservation system built in Deno.  
 Please visit [this site](http://mmrdocs.shinjl.com) for live demo.
