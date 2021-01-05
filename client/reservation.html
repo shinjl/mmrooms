@@ -1,0 +1,69 @@
+<div id="edit-reservation-popup" class="popup">
+    <form id="edit-reservation" method="post" v-on:submit.prevent>
+        <!-- Dummy submit button to trigger submit event -->
+        <input type="submit" value="submit" v-on:click="onEnter" style="display: none;" />
+        <div class="input-group">
+            <div class="input-subgroup">
+                <input type="text" class="room-name" id="room-name" v-model.lazy="DATA.roomName" disabled />
+                <button class="delete-button" v-on:click="deleteMe"
+                    v-if="isMyReservation">{{ MMR_LANG.delete }}</button>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="from-date">{{ MMR_LANG.fromTo }}</label>
+            <div class="input-subgroup">
+                <div class="calendar-input">
+                    <!-- use v-model.lazy here to collaborate with Cleave.js-->
+                    <input type="text" class="input-date" id="from-date" ref="fromDate" v-model.lazy="DATA.fromDate"
+                        @change="updateInput()" autocomplete="off" v-bind:disabled="disabled" />
+                    <i class="fa fa-calendar-alt calendar-icon"></i>
+                </div>
+                <select id="from-time" ref="fromTime" class="input-time custom-select" v-model.lazy="DATA.fromTime"
+                    @change="updateInput()" v-bind:disabled="disabled">
+                    <option v-for="option in timeOptions" v-bind:value="option">
+                        {{ option }}
+                    </option>
+                </select>
+                <div class="calendar-input space1">
+                    <!-- use v-model.lazy here to collaborate with Cleave.js-->
+                    <input type="text" class="input-date" id="to-date" ref="toDate" v-model.lazy="DATA.toDate"
+                        @change="updateInput()" autocomplete="off" readonly />
+                    <i class="fa fa-calendar-alt calendar-icon calendar-disabled"></i>
+                </div>
+                <select id="to-time" ref="toTime" class="input-time custom-select" v-model.lazy="DATA.toTime"
+                    @change="updateInput()" v-bind:disabled="disabled">
+                    <option v-for="option in timeOptions" v-bind:value="option">
+                        {{ option }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="purpose">{{ MMR_LANG.purpose }}</label>
+            <select id="purpose" class="custom-select" v-model.lazy="DATA.purpose" @change="updateInput()"
+                v-bind:disabled="disabled">
+                <option value="meeting" selected>{{ MMR_LANG.purposeMeeting }}</option>
+                <option value="other">{{ MMR_LANG.purposeOther }}</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="comment">{{ MMR_LANG.comment }}</label>
+            <input type="text" id="comment" maxlength="256" v-model.lazy="DATA.comment" @change="updateInput()"
+                autocomplete="off" v-bind:disabled="disabled" />
+        </div>
+        <div class="input-group">
+            <label for="mention">{{ MMR_LANG.mention }}</label>
+            <input type="text" id="mention" ref="mention" maxlength="1024" :placeholder="MMR_LANG.mentionComment"
+                v-model.lazy="DATA.mentionUsers" @change="updateInput()" autocomplete="off"
+                v-bind:disabled="disabled" />
+        </div>
+        <div class="input-group" v-if="reservedBy">
+            <label for="reserved-by">{{ MMR_LANG.reservedBy }}</label>
+            <input type="text" id="reserved-by" ref="reserved-by" v-model.lazy="reservedBy" autocomplete="off"
+                disabled />
+        </div>
+        <div class="input-group" v-if="DATA.error">
+            <div class="error" id="error">{{ DATA.error }}</div>
+        </div>
+    </form>
+</div>

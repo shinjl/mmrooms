@@ -1,0 +1,470 @@
+@font-face {
+    font-family: 'Charm-Regular';
+    src: url('./fonts/Charm-Regular.woff') format('woff'), url('./fonts/Charm-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Charm-Bold';
+    src: url('./fonts/Charm-Bold.woff') format('woff'), url('./fonts/Charm-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    background-color: #fefefe;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+    color: #6b29f8;
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    min-height: 100%;
+    height: 100%;
+}
+
+label,
+input,
+select {
+    font-size: 1rem;
+}
+
+#app {
+    display: none; /* Show whole page contents after initializing the Vue */
+}
+
+.container {
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.full-height-grow {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: inherit;
+    text-decoration: none;
+    margin-left: -5px;
+}
+
+.logo-title {
+    margin-left: 0.5rem;
+    font-family: Charm-Bold;
+}
+
+.header-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.header-nav li {
+    color: #888888;
+}
+
+.header-nav a {
+    color: #888888;
+    text-decoration: none;
+    padding-left: 2rem;
+    font-size: 1.2rem;
+}
+
+.header-nav img {
+    width: 20px;
+    height: 20px;
+}
+
+.settings {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: -5px;
+    width: 200px;
+    box-shadow: 0 16px 32px 0 rgba(10, 16, 34, 0.2), 0 0 0 transparent;
+    transform: translateY(-5px) translateZ(0);
+    padding: 1rem 2rem 2rem;
+    background: #ffffff;
+    z-index: 99999999;
+}
+
+.language h3 {
+    color: #666666;
+    font-weight: normal;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.language input {
+    margin: 0.5rem 0;
+}
+
+.language label {
+    padding-left: 0.3rem;
+}
+
+.header-line {
+    border: none;
+    height: 50px;
+    min-height: 50px;
+    margin-top: -40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(107, 41, 248, 0.6);
+    box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.main-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex: auto;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#back-to-home {
+    display: none;
+}
+
+.main-footer {
+    display: flex;
+    background: #372b47;
+    padding: 0 1rem;
+}
+
+.footer-illustration {
+    display: flex;
+    height: 100px;
+}
+
+#footer-illustration {
+    align-self: flex-end;
+    transition: opacity 1s ease-in-out;
+    height: 80px;
+    margin-right: 3rem;
+}
+
+.footer-nav {
+    color: #dddddd;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.footer-links ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+}
+
+.footer-links a {
+    color: #bbbbbb;
+    text-decoration: none;
+    padding-right: 3rem;
+    font-size: 0.9rem;
+}
+
+.footer-links a::before {
+    font-family: 'Font Awesome 5 Free';
+    content: '\f35d';
+    padding-right: 0.5rem;
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-subtitle {
+    font-size: 1.2rem;
+    padding-right: 1rem;
+}
+
+.footer-contact {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.footer-contact ul {
+    display: flex;
+    list-style: none;
+}
+
+.footer-contact svg {
+    width: 32px;
+    height: 32px;
+    fill: #aaaaaa;
+    margin: 0 1rem;
+}
+
+.footer-contact svg:hover {
+    fill: #dddddd;
+}
+
+/* Swal customization */
+.swal2-title {
+    font-size: 1.3em;
+}
+
+.swal2-styled.swal2-confirm,
+.swal2-styled.swal2-cancel {
+    font-size: 1em;
+}
+
+.swal2-actions {
+    z-index: 0;
+}
+
+.vanilla-calendar .vanilla-calendar-week span {
+    padding: 10px 0;
+    font-size: 0.9rem;
+}
+
+/* Swal customization */
+
+/* Edit dialog */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: #777777;
+}
+
+.input-group input,
+.input-group select {
+    outline: none;
+    border: 1px solid #cfcfcf;
+    padding: 0.5rem;
+    color: #555555;
+    border-radius: 3px;
+}
+
+.input-group input:disabled {
+    background: transparent;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #6b29f8;
+}
+
+.room-name {
+    border: none !important;
+    padding: 1rem 0.5rem 0.5rem 0 !important;
+    font-size: 1.2rem;
+    flex-grow: 1;
+}
+
+.delete-button {
+    width: 80px;
+    height: 30px;
+    margin: 1rem 0 0.5rem;
+    background: #ff000c;
+    border-radius: 5px;
+    border: none;
+    color: #eeeeee;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.delete-button:hover {
+    color: #ffffff;
+}
+
+.input-subgroup {
+    display: flex;
+    justify-content: space-between;
+}
+
+.calendar-input {
+    display: flex;
+    position: relative;
+}
+
+.space1 {
+    margin-left: 1rem;
+}
+
+.calendar-icon {
+    background: #ffffff;
+    color: #aaa;
+    min-width: 30px;
+    max-width: 30px;
+    border: 1px solid #cfcfcf;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 0.6rem 2rem 0.4rem 0.4rem;
+    cursor: pointer;
+}
+
+.calendar-icon:hover {
+    color: #6b29f8;
+}
+
+.input-date {
+    border-right: none !important;
+    border-radius: 3px 0 0 3px !important;
+    width: 100%;
+    min-width: 100px;
+}
+
+.input-date:focus + .calendar-icon {
+    border: 1px solid #6b29f8;
+    border-left: none;
+}
+
+.input-time {
+    border-radius: 0 3px 3px 0 !important;
+    width: 100px;
+    min-width: 100px;
+}
+
+/* Change default select style */
+.custom-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('./images/caret-off.svg');
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.8em auto, 100%;
+}
+
+.custom-select:hover,
+.custom-select:focus {
+    background-image: url('./images/caret-on.svg');
+}
+
+.custom-select:hover {
+    cursor: pointer;
+}
+
+.custom-select:focus {
+    border-color: #596da0;
+}
+
+.custom-calendar {
+    position: absolute;
+    top: 2.6rem;
+    left: 0;
+    box-shadow: 0px 5px 5px 3px rgba(0, 0, 0, 0.1);
+    z-index: 99999999;
+}
+
+.popup-blocker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: ' ';
+    background: rgba(0, 0, 0, 0);
+    z-index: 99999998;
+    display: none;
+}
+
+.popup {
+    border-top: 1px solid #eeeeee;
+}
+
+.error {
+    padding: 1rem 0 0.5rem 0 !important;
+    font-size: 1rem;
+    color: #f27474 !important;
+    overflow: hidden;
+    text-align: left;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.error::before {
+    content: '!';
+    display: inline-block;
+    width: 1.5em;
+    min-width: 1.5em;
+    height: 1.5em;
+    margin: 0 0.625em;
+    border-radius: 50%;
+    background-color: #f27474;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.input-group-hidden {
+    display: none;
+}
+
+/* Edit dialog */
+
+/* Tribute customization */
+.tribute-container {
+    border: 1px solid #aaaaaa;
+    overflow-x: hidden;
+}
+
+.tribute-container ul {
+    margin-top: 0;
+    background: #fefefe;
+}
+
+.tribute-container li {
+    color: #555555;
+    min-width: 250px;
+    font-size: 1rem;
+}
+/* Tribute customization */

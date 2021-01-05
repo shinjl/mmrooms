@@ -1,0 +1,138 @@
+<link href="./details.css" rel="stylesheet" />
+
+<div id="details" class="details-container" style="display: none">
+    <div class="row">
+        <img
+            class="row-icon row-icon-area"
+            src="./images/detail-icon-area.svg"
+        />
+        <div class="area-selector">
+            <multiselect
+                v-model="areaSelected"
+                track-by="areaId"
+                label="areaName"
+                ref="areaSelected"
+                multiple="true"
+                :max="5"
+                :show-labels="true"
+                :show-no-results="true"
+                v-bind:placeholder="MMR_LANG.selectArea"
+                v-bind:select-label="MMR_LANG.multiselectSelectLabel"
+                v-bind:selected-label="MMR_LANG.multiselectSelectedLabel"
+                v-bind:deselect-label="MMR_LANG.multiselectDeSelectedLabel"
+                :options="areaOptions"
+                @input="areaChange"
+            >
+                <span slot="noOptions"
+                    >{{ MMR_LANG.multiselectNoOptions }}</span
+                >
+                <span slot="noResult">{{ MMR_LANG.multiselectNoResult }}</span>
+                <span slot="maxElements"
+                    >{{ MMR_LANG.multiselectMaxElements }}</span
+                >
+            </multiselect>
+        </div>
+        <img
+            class="row-icon row-icon-room"
+            src="./images/detail-icon-room.svg"
+        />
+        <div class="room-selector">
+            <multiselect
+                v-model="roomSelected"
+                track-by="roomId"
+                label="roomName"
+                multiple="true"
+                :show-labels="true"
+                :show-no-results="true"
+                :close-on-select="false"
+                v-bind:placeholder="MMR_LANG.selectRoom"
+                v-bind:select-label="MMR_LANG.multiselectSelectLabel"
+                v-bind:selected-label="MMR_LANG.multiselectSelectedLabel"
+                v-bind:deselect-label="MMR_LANG.multiselectDeSelectedLabel"
+                :options="roomOptions"
+            >
+                <span slot="noOptions"
+                    >{{ MMR_LANG.multiselectNoOptions }}</span
+                >
+                <span slot="noResult">{{ MMR_LANG.multiselectNoResult }}</span>
+                <span slot="maxElements"
+                    >{{ MMR_LANG.multiselectMaxElements }}</span
+                >
+            </multiselect>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group">
+            <div class="input-subgroup">
+                <img
+                    class="row-icon row-icon-date"
+                    src="./images/detail-icon-date.svg"
+                />
+                <div class="calendar-input">
+                    <!-- use v-model.lazy here to collaborate with Cleave.js-->
+                    <input
+                        type="text"
+                        class="input-date"
+                        id="from-date"
+                        ref="fromDate"
+                        v-model.lazy="fromDate"
+                        @change="updateInput()"
+                        autocomplete="off"
+                        v-bind:placeholder="MMR_LANG.selectFromDatetime"
+                    />
+                    <i class="fa fa-calendar-alt calendar-icon"></i>
+                </div>
+                <img class="row-icon-arrow" src="./images/arrow.svg" />
+                <div class="calendar-input">
+                    <!-- use v-model.lazy here to collaborate with Cleave.js-->
+                    <input
+                        type="text"
+                        class="input-date"
+                        id="to-date"
+                        ref="toDate"
+                        v-model.lazy="toDate"
+                        @change="updateInput()"
+                        autocomplete="off"
+                        v-bind:placeholder="MMR_LANG.selectToDatetime"
+                    />
+                    <i class="fa fa-calendar-alt calendar-icon"></i>
+                </div>
+                <img
+                    class="row-icon row-icon-time"
+                    src="./images/detail-icon-time.svg"
+                />
+                <select
+                    id="from-time"
+                    ref="fromTime"
+                    class="input-time custom-select"
+                    v-model.lazy="fromTime"
+                    @change="updateInput()"
+                >
+                    <option v-for="option in timeOptions" v-bind:value="option">
+                        {{ option }}
+                    </option>
+                </select>
+                <img class="row-icon-arrow" src="./images/arrow.svg" />
+                <select
+                    id="to-time"
+                    ref="toTime"
+                    class="input-time custom-select"
+                    v-model.lazy="toTime"
+                    @change="updateInput()"
+                >
+                    <option v-for="option in timeOptions" v-bind:value="option">
+                        {{ option }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="search">
+            <button class="search-button" v-on:click="search">
+                {{ MMR_LANG.search }}
+            </button>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div id="data-grid" class="data-grid"></div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{
+    "cSpell.words": ["Bson", "Swal", "multiselect"],
+    "search.exclude": {
+        "**/client/css/*": true,
+        "**/client/fonts/*": true,
+        "**/client/js/*": true,
+        "**/client/images/*": true,
+        "**/client/webfonts/*": true
+    },
+    "deno.enable": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 4
+    },
+    "deno.import_intellisense_origins": {
+        "https://deno.land": true
+    }
+}
