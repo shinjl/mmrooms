@@ -445,7 +445,7 @@
     // Start timer to refresh statistics automatically
     setInterval(async () => {
         await refreshStatistics();
-    }, 10000);
+    }, 60000);
     await refreshStatistics();
 
     // Initialize Drift widget
