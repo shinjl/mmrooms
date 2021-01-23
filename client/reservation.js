@@ -311,7 +311,6 @@ const RESERVATION = (() => {
                         reservedBy,
                         isMyReservation,
                     },
-                    // Note: arrow function does not work properly here because of 'this' pointed to the different object
                     methods: {
                         /**
                          * clear error when editing

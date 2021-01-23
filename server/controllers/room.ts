@@ -9,6 +9,7 @@ let cachedRoomData: any = {};
 /**
  * Get all room data from DB and keep it in cache
  * Note: Require restart the server after changing the rooms collection
+ * @param lang Request language
  * @param areaIds Filter by area if the areaIds is specified
  */
 const getRooms = async (

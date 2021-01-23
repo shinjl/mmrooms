@@ -179,9 +179,8 @@
             availableNow: availableNow,
             news: news,
         },
-        // arrow function does not work properly inside methods because of 'this' pointed to the different object
+
         methods: {
-            // Check form before submit,
             changeLang: async function (event) {
                 // Change language settings
                 MMR.currentLangID = this.selectedLang;
