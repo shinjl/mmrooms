@@ -14,7 +14,7 @@ Make sure Deno and MongoDB are installed.
 From mongo shell execute the following command
 
 ```
--- Switched DB
+-- Switch DB
 use <dbname>;
 
 -- Create Collections
